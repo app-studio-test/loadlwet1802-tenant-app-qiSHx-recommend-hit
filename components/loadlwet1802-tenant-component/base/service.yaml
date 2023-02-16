@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dotnet-deploy
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: loadlwet1802-tenant-component
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: loadlwet1802-tenant-component
+    app.kubernetes.io/part-of: loadlwet1802-tenant-app
+  name: loadlwet1802-tenant-component
+  namespace: loadlwet1802-tenant
+spec:
+  ports:
+  - name: http-8081
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: devfile-dotnet-deploy
+    app.kubernetes.io/instance: loadlwet1802-tenant-component
+  type: LoadBalancer
+status:
+  loadBalancer: {}
